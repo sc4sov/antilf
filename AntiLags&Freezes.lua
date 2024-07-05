@@ -17,11 +17,11 @@ local ini = inicfg.load({
 
 function download_handler(id, status, p1, p2)
 	if status == dlstatus.STATUS_DOWNLOADINGDATA then
-		sampAddChatMessage(string.format('[AntiLags&Freezes] {ffffff}Загружено {ffd700}%d {ffffff}из {ffd700}%d.', p1, p2), 0xAA3333)
+		sampAddChatMessage(string.format('[AntiLags&Freezes] {ffffff}Г‡Г ГЈГ°ГіГ¦ГҐГ­Г® {ffd700}%d {ffffff}ГЁГ§ {ffd700}%d.', p1, p2), 0xAA3333)
 	elseif status == dlstatus.STATUS_ENDDOWNLOADDATA then
-		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Загрузка {ffd700}завершена.', 0xAA3333)
+		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Г‡Г ГЈГ°ГіГ§ГЄГ  {ffd700}Г§Г ГўГҐГ°ГёГҐГ­Г .', 0xAA3333)
 		if not doesFileExist(getGameDirectory()..'\\SAMPFUNCS\\AntiLags&Freezes.json') then
-			sampAddChatMessage('[AntiLags&Freezes] {ffffff}Теперь мы {ffd700}перенесем конфиг {ffffff}на {afafaf}SAMPFUNCS {ffffff}версию', 0xAA3333)
+			sampAddChatMessage('[AntiLags&Freezes] {ffffff}Г’ГҐГЇГҐГ°Гј Г¬Г» {ffd700}ГЇГҐГ°ГҐГ­ГҐГ±ГҐГ¬ ГЄГ®Г­ГґГЁГЈ {ffffff}Г­Г  {afafaf}SAMPFUNCS {ffffff}ГўГҐГ°Г±ГЁГѕ', 0xAA3333)
 			create_config() 
 		end
 		download_id_ = nil
@@ -31,7 +31,7 @@ end
 function create_config()
 	if doesFileExist(getGameDirectory()..'\\SAMPFUNCS\\AntiLags&Freezes.json') then
 
-		os.remove(getWorkingDirectory()..'\\config\\AntiLags&Freezes.ini')
+		os.remove(getWorkingDirectory()..'\\config\\'..iniFile)
 		os.remove(getWorkingDirectory()..'\\'..thisScript().name)
 	
 		thisScript():unload()
@@ -39,11 +39,11 @@ function create_config()
 	end
 	file = io.open(getGameDirectory() .. '/SAMPFUNCS/AntiLags&Freezes.json', "w")
 	if not file then
-		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Конфиг создать {ffd700}не удалось', 0xAA3333)
+		sampAddChatMessage('[AntiLags&Freezes] {ffffff}ГЉГ®Г­ГґГЁГЈ Г±Г®Г§Г¤Г ГІГј {ffd700}Г­ГҐ ГіГ¤Г Г«Г®Г±Гј', 0xAA3333)
 	end
 	file:write(string.format('{"create_vehicle_3dtext":%d,"ped_objects":%d,"server_objects":%d,"vehicle_objects":%d}', tonumber(ini.cfg.Label), tonumber(ini.cfg.PlayerObjects), tonumber(ini.cfg.ServerObjects), tonumber(ini.cfg.VehicleObjects)))
 	file:close()
-	sampAddChatMessage('[AntiLags&Freezes] {ffffff}Конфиг успешно создан, скрипт был перенесен на {afafaf}SAMPFUNCS', 0xAA3333)
+	sampAddChatMessage('[AntiLags&Freezes] {ffffff}ГЉГ®Г­ГґГЁГЈ ГіГ±ГЇГҐГёГ­Г® Г±Г®Г§Г¤Г Г­, Г±ГЄГ°ГЁГЇГІ ГЎГ»Г« ГЇГҐГ°ГҐГ­ГҐГ±ГҐГ­ Г­Г  {afafaf}SAMPFUNCS', 0xAA3333)
 
 	sampUnregisterChatCommand("ferp")
 	runSampfuncsConsoleCommand("pload AntiLags&Freezes.sf")
@@ -62,8 +62,8 @@ function main()
 	if not doesFileExist(getGameDirectory()..'\\SAMPFUNCS\\AntiLags&Freezes.sf') then
 		sampAddChatMessage('', -1)
 		sampAddChatMessage('', -1)
-		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Скрипт - теперь {ffd700}плагин{ffffff}, и был переведен на {AFAFAF}SAMPFUNCS{ffffff}.', 0xAA3333)
-		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Сейчас он будет подкачен в папку SAMPFUNCS, после нужно будет перезайти в игру', 0xAA3333)
+		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Г‘ГЄГ°ГЁГЇГІ - ГІГҐГЇГҐГ°Гј {ffd700}ГЇГ«Г ГЈГЁГ­{ffffff}, ГЁ ГЎГ»Г« ГЇГҐГ°ГҐГўГҐГ¤ГҐГ­ Г­Г  {AFAFAF}SAMPFUNCS{ffffff}.', 0xAA3333)
+		sampAddChatMessage('[AntiLags&Freezes] {ffffff}Г‘ГҐГ©Г·Г Г± Г®Г­ ГЎГіГ¤ГҐГІ ГЇГ®Г¤ГЄГ Г·ГҐГ­ Гў ГЇГ ГЇГЄГі SAMPFUNCS, ГЇГ®Г±Г«ГҐ Г­ГіГ¦Г­Г® ГЎГіГ¤ГҐГІ ГЇГҐГ°ГҐГ§Г Г©ГІГЁ Гў ГЁГЈГ°Гі', 0xAA3333)
 		sampAddChatMessage('', -1)
 		sampAddChatMessage('', -1)
 		to_download = true
